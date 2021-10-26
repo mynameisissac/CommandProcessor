@@ -4,9 +4,13 @@
 
 using namespace std;
 
+// print the start message
+void startPrint() {
+    cout << "Command Processor\nType 'quit' to exit" << endl;
+}
 
 int main() {
-
+    startPrint();
     auto *testing = new Processor();       // create a dynamic processor object to process the command
     CommandHandler *handler;                                          // handler is to handle different kinds of command
     testing->readInput();                               // read the first input

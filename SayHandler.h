@@ -5,12 +5,12 @@
 #ifndef COMMANDPROCESSOR_SAYHANDLER_H
 #define COMMANDPROCESSOR_SAYHANDLER_H
 
-#include "CommandHandler.h"
+#include "InvalidCommandHandler.h"
 #include <string>
 
 using std::string;
 
-class SayHandler : public CommandHandler {
+class SayHandler : public InvalidCommandHandler {
     private:
         string response_text;
     public:

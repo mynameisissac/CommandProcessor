@@ -25,7 +25,6 @@ class Processor {
         string current_user_input;              // the user input which is currently going to be processed
 
     public:
-
         explicit Processor();              // constructor
         CommandHandler *response() const;      // process the command
         void readInput();                                   // read user input command

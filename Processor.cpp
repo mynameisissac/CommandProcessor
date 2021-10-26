@@ -39,6 +39,7 @@ Processor::Processor() = default;
  */
 void Processor::readInput() {
     string input;
+    cout << "> ";
     getline(cin, input);
     current_user_input = input;
     user_input_record.push_back(input);

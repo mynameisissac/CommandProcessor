@@ -5,12 +5,12 @@
 #ifndef COMMANDPROCESSOR_ADDHANDLER_H
 #define COMMANDPROCESSOR_ADDHANDLER_H
 
-#include "CommandHandler.h"
+#include "InvalidCommandHandler.h"
 #include <string>
 
 using std::string;
 
-class AddHandler : public CommandHandler {
+class AddHandler : public InvalidCommandHandler {
     private:
         float decimal_1;
         float decimal_2;

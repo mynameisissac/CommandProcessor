@@ -11,9 +11,14 @@
 using std::string;
 
 class InvalidCommandHandler : public CommandHandler {
-    private:
-        const string help_text = "Command not recognized.";       // help_text to display
+    protected:
+        string help_text = "Command not recognized.";          // help_text to display
+        // different error may occur, start from 1
+        // 0 means no error
+        int errorCode = 1;
     public:
+        InvalidCommandHandler() = default;                    // default constructor
+        explicit InvalidCommandHandler(string help_text, int errorCode = 1);     // conversion constructor
         void handle_command() override;
 };
 
