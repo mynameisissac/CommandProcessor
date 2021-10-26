@@ -6,10 +6,8 @@ using namespace std;
 
 
 int main() {
-    // the list of command available for this processor
-    vector<string> commandList = {"ping", "say", "add", "subtract", "quit"};
 
-    auto *testing = new Processor(commandList);       // create a dynamic processor object to process the command
+    auto *testing = new Processor();       // create a dynamic processor object to process the command
     CommandHandler *handler;                                          // handler is to handle different kinds of command
     testing->readInput();                               // read the first input
     while (testing->getCurrentInput() != "quit") {

@@ -20,15 +20,13 @@ using std::vector;
 class Processor {
 
     private:
-        vector<string> command_list;            // a vector storing all the command
         vector<string> user_input_record;       // storing user input record
         //int run_index;                        // indicate which command is going to be processed
         string current_user_input;              // the user input which is currently going to be processed
 
     public:
 
-        explicit Processor(vector<string> command_list);              // constructor
-        bool validInput(const string &user_input) const;           // check if the user input is a valid command
+        explicit Processor();              // constructor
         CommandHandler *response() const;      // process the command
         void readInput();                                   // read user input command
 
