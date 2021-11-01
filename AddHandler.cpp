@@ -15,10 +15,19 @@ bool validDecimal(const string &str) {
     return true;
 }
 
+// a conversion constructor which only
+AddHandler::AddHandler(int sign)
+        : InvalidCommandHandler("Usage: add <decimal1> <decimal2>", 0), signOfdecimal_2(sign), decimal_1(0),
+          decimal_2(0) {
+    if (sign == -1)
+        help_text = "Usage: subtract <decimal1> <decimal2>";
+}
+
+
 // constructor of the AddHandler
 // assign the decimal values and the sign
 AddHandler::AddHandler(const string &user_input)
-        : InvalidCommandHandler("Usage: add <decimal1> <decimal2>", false), signOfdecimal_2(1) {
+        : InvalidCommandHandler("Usage: add <decimal1> <decimal2>", 0), signOfdecimal_2(1) {
     int posOfSpace1 = (int) user_input.find(' ');                              // the position of the first white space
     int posOfSpace2 = (int) user_input.find(' ', posOfSpace1 + 1);        // the position of the second white space
 
@@ -39,17 +48,23 @@ AddHandler::AddHandler(const string &user_input)
     }
 }
 
+// print the error message, and the help_text
+void AddHandler::printErrorMessage() {
+    if (errorCode == 1)
+        std::cout << "No values provided." << std::endl;
+    else if (errorCode == 2)
+        std::cout << "Two values required." << std::endl;
+    else if (errorCode == 3)
+        std::cout << "Invalid value." << std::endl;
+
+    InvalidCommandHandler::handle_command();            // this call the handle_command of base class which print the error help text
+}
+
+
 void AddHandler::handle_command() {
 
     if (errorCode != 0) {           // if it has error
-        if (errorCode == 1)
-            std::cout << "No values provided." << std::endl;
-        else if (errorCode == 2)
-            std::cout << "Two values required." << std::endl;
-        else if (errorCode == 3)
-            std::cout << "Invalid value." << std::endl;
-
-        InvalidCommandHandler::handle_command();            // this call the handle_command of base class which print the error help text
+        printErrorMessage();
     } else {
         // calculate the result of addition/subtraction to output
         float response_result =

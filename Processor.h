@@ -10,7 +10,9 @@
 #include "PingHandler.h"
 #include "SayHandler.h"
 #include "AddHandler.h"
+#include "QuitHandler.h"
 #include "InvalidCommandHandler.h"
+#include "HelpHandler.h"
 #include <vector>
 
 using std::string;
@@ -23,9 +25,9 @@ class Processor {
         vector<string> user_input_record;       // storing user input record
         //int run_index;                        // indicate which command is going to be processed
         string current_user_input;              // the user input which is currently going to be processed
-
+        bool *const programTermination;         // indicator of when the main program end
     public:
-        explicit Processor();              // constructor
+        explicit Processor(bool *programTermination);              // conversion constructor
         CommandHandler *response() const;      // process the command
         void readInput();                                   // read user input command
 

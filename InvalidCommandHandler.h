@@ -12,7 +12,9 @@ using std::string;
 
 class InvalidCommandHandler : public CommandHandler {
     protected:
-        string help_text = "Command not recognized.";          // help_text to display
+        // help_text to display
+        string help_text = "Command not recognized.";
+
         // different error may occur, start from 1
         // 0 means no error
         int errorCode = 1;

@@ -7,5 +7,8 @@
 
 void PingHandler::handle_command() {
     std::cout << response_text << std::endl;
-
 }
+
+
+PingHandler::PingHandler()
+        : InvalidCommandHandler("Usage: ping", 0) {}

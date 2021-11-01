@@ -5,6 +5,11 @@
 #include "SayHandler.h"
 #include <iostream>
 
+// default constructor
+SayHandler::SayHandler()
+        : InvalidCommandHandler("Usage: say <text>", 0) {
+}
+
 void SayHandler::handle_command() {
     if (errorCode == 1) {                        // if user input is invalid
         std::cout << "No text provided." << std::endl;

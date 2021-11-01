@@ -17,8 +17,12 @@ class AddHandler : public InvalidCommandHandler {
         int signOfdecimal_2;        // signOfdecimal_2 will be -1 if the command prompt to do subtract, 1 if it is add
 
     public:
-        explicit AddHandler(const string &user_input);              // constructor
+        explicit AddHandler(
+                int sign);              // a conversion constructor which only consider the sign (do add or subtract)
+        explicit AddHandler(const string &user_input);              // conversion constructor takes a string
+        void printErrorMessage();                       // print the error help_text when the user input is invalid
         void handle_command() override;
+
 };
 
 

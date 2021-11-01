@@ -5,7 +5,7 @@
 #ifndef COMMANDPROCESSOR_PINGHANDLER_H
 #define COMMANDPROCESSOR_PINGHANDLER_H
 
-#include "CommandHandler.h"
+#include "InvalidCommandHandler.h"
 #include <string>
 
 using std::string;
@@ -13,13 +13,14 @@ using std::string;
 /**
  * derived class from the interface CommandHandler
  */
-class PingHandler : public CommandHandler {
+class PingHandler : public InvalidCommandHandler {
     private:
         // text of corresponding response output
         // with initialized value
         string response_text{"pong"};
 
     public:
+        PingHandler();          // default constructor
         void handle_command() override;
 };
 

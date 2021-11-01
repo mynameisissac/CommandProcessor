@@ -5,14 +5,14 @@
 #include <iostream>
 #include "Processor.h"
 #include <string>
-#include <utility>
 #include <algorithm>
 
 using namespace std;
 
+
 /**
- * process the command : validate the input and choose which CommandHandler to assign for handler
- * @param handler a pointer to a CommandHandler which is passed by reference
+ *  process the command : validate the input and choose which CommandHandler to assign for handler
+ * @return a pointer to dynamic CommandHandler object
  */
 CommandHandler *Processor::response() const {
 
@@ -25,13 +25,21 @@ CommandHandler *Processor::response() const {
         return new AddHandler(current_user_input); // NOLINT(bugprone-branch-clone)
     else if (current_user_input.rfind("subtract", 0) != string::npos)      // command : subtract
         return new AddHandler(current_user_input);
+    else if (current_user_input.rfind("help", 0) != string::npos)           // command : help
+        return new HelpHandler(current_user_input);
+    else if (current_user_input.rfind("quit", 0) != string::npos)                   // command : quit
+        return new QuitHandler(programTermination);
     else
         return new InvalidCommandHandler();         // if the input is invalid
 }
 
 
-// constructor of the processor to initialize the command list
-Processor::Processor() = default;
+// constructor of the processor to initialize programTermination
+Processor::Processor(bool *programTermination)
+        : programTermination(programTermination) {
+    // set the program end indicator to false
+    (*programTermination) = false;
+}
 
 
 /**
