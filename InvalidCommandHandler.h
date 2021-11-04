@@ -17,6 +17,7 @@ class InvalidCommandHandler : public CommandHandler {
 
         // different error may occur, start from 1
         // 0 means no error
+        // this errorCode is basically for the derived class of InvalidCommandHandler
         int errorCode = 1;
     public:
         InvalidCommandHandler() = default;                    // default constructor

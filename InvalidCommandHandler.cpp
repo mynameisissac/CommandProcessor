@@ -18,3 +18,4 @@ InvalidCommandHandler::InvalidCommandHandler(string help_text, int errorCode)
 void InvalidCommandHandler::handle_command() {
     std::cout << help_text << std::endl;
 }
+

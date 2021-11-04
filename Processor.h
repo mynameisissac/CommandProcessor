@@ -13,6 +13,7 @@
 #include "QuitHandler.h"
 #include "InvalidCommandHandler.h"
 #include "HelpHandler.h"
+#include "BlacklistHandler.h"
 #include <vector>
 
 using std::string;

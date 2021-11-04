@@ -27,8 +27,10 @@ CommandHandler *Processor::response() const {
         return new AddHandler(current_user_input);
     else if (current_user_input.rfind("help", 0) != string::npos)           // command : help
         return new HelpHandler(current_user_input);
-    else if (current_user_input.rfind("quit", 0) != string::npos)                   // command : quit
+    else if (current_user_input.rfind("quit", 0) != string::npos)           // command : quit
         return new QuitHandler(programTermination);
+    else if (current_user_input.rfind("blacklist", 0) != string::npos)
+        return new BlacklistHandler(current_user_input);                            // command : blacklist
     else
         return new InvalidCommandHandler();         // if the input is invalid
 }
