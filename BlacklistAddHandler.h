@@ -5,13 +5,16 @@
 #ifndef COMMANDPROCESSOR_BLACKLISTADDHANDLER_H
 #define COMMANDPROCESSOR_BLACKLISTADDHANDLER_H
 
-#include "BlacklistSubCommandHandler.h"
+#include "SubCommandHandler.h"
 
-class BlacklistAddHandler : public BlacklistSubCommandHandler {
+class BlacklistAddHandler : public SubCommandHandler {
     private:
 
     public:
-        BlacklistAddHandler();
+        explicit BlacklistAddHandler(const string &userInput);
+
+        // validate the input, including checking if the parameter is input correctly, return the errorCode
+        int validateInput(const string &userInput);
 
         void handle_command() override;
 };

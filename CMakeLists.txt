@@ -3,4 +3,4 @@ project(CommandProcessor)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(CommandProcessor main.cpp Processor.cpp Processor.h CommandHandler.cpp CommandHandler.h PingHandler.cpp PingHandler.h SayHandler.cpp SayHandler.h AddHandler.cpp AddHandler.h InvalidCommandHandler.cpp InvalidCommandHandler.h HelpHandler.cpp HelpHandler.h QuitHandler.cpp QuitHandler.h BlacklistHandler.cpp BlacklistHandler.h BlacklistAddHandler.cpp BlacklistAddHandler.h BlacklistSubCommandHandler.cpp BlacklistSubCommandHandler.h)
+add_executable(CommandProcessor main.cpp Processor.cpp Processor.h CommandHandler.cpp CommandHandler.h PingHandler.cpp PingHandler.h SayHandler.cpp SayHandler.h AddHandler.cpp AddHandler.h InvalidCommandHandler.cpp InvalidCommandHandler.h HelpHandler.cpp HelpHandler.h QuitHandler.cpp QuitHandler.h BlacklistHandler.cpp BlacklistHandler.h BlacklistAddHandler.cpp BlacklistAddHandler.h SubCommandHandler.cpp SubCommandHandler.h)

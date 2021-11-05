@@ -21,10 +21,10 @@ BlacklistHandler::BlacklistHandler(const string &user_input)
 bool
 BlacklistHandler::validateInput(const string &user_input)  // NOLINT(readability-convert-member-functions-to-static)
 {
-    string subCommand;
-    subCommand = user_input.substr(user_input.find(' ') + 1);
+    // substring the subCommand part (including the parameter)
+    string subCommand = user_input.substr(user_input.find(' ') + 1);
     if (subCommand.substr(0, 3) == "add") {
-        subCommandHandler = new BlacklistAddHandler();
+        subCommandHandler = new BlacklistAddHandler(subCommand);
         return true;
     } else if (subCommand.substr(0, 5) == "clear") {
         subCommandHandler;
