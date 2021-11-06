@@ -28,7 +28,7 @@ class Processor {
         string current_user_input;              // the user input which is currently going to be processed
         bool *const programTermination;         // indicator of when the main program end
     public:
-        explicit Processor(bool *programTermination);              // conversion constructor
+        explicit Processor(bool *programTermination);        // conversion constructor
         CommandHandler *response() const;      // process the command
         void readInput();                                   // read user input command
 

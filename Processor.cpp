@@ -9,6 +9,8 @@
 
 using namespace std;
 
+// definition of the BlacklistHandler class static data member
+vector<string> BlacklistHandler::blacklist;
 
 /**
  *  process the command : validate the input and choose which CommandHandler to assign for handler
@@ -29,8 +31,8 @@ CommandHandler *Processor::response() const {
         return new HelpHandler(current_user_input);
     else if (current_user_input.rfind("quit", 0) != string::npos)           // command : quit
         return new QuitHandler(programTermination);
-    else if (current_user_input.rfind("blacklist", 0) != string::npos)
-        return new BlacklistHandler(current_user_input);                            // command : blacklist
+    else if (current_user_input.rfind("blacklist", 0) != string::npos)      // command : blacklist
+        return new BlacklistHandler(current_user_input);
     else
         return new InvalidCommandHandler();         // if the input is invalid
 }

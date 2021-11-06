@@ -10,9 +10,10 @@
 
 using std::string;
 
+// store and handle the case which need command specific help text
 class InvalidCommandHandler : public CommandHandler {
     protected:
-        // help_text to display
+        // command specific help_text to display when some invalid input occur
         string help_text = "Command not recognized.";
 
         // different error may occur, start from 1

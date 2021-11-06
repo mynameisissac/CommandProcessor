@@ -5,5 +5,5 @@
 #include "SubCommandHandler.h"
 
 
-SubCommandHandler::SubCommandHandler(const string &help_text)
-        : InvalidCommandHandler(help_text, 0) {}
+SubCommandHandler::SubCommandHandler(const string &help_text, string baseHandlerType)
+        : InvalidCommandHandler(help_text, 0), baseHandlerType(std::move(baseHandlerType)) {}

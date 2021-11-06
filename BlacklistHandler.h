@@ -8,23 +8,25 @@
 #include "InvalidCommandHandler.h"
 #include "SubCommandHandler.h"
 #include "BlacklistAddHandler.h"
+#include "BlacklistClearHandler.h"
+#include "BlacklistListHandler.h"
+#include "BlacklistRemoveHandler.h"
 #include <vector>
 
 using std::vector;
 
 class BlacklistHandler : public InvalidCommandHandler {
     private:
-        // the list storing the blacklisted name
-        // it is static as all BlacklistHandler share the same list
-        static vector<string> blacklist;
         // the subCommandHandler handle further process
         SubCommandHandler *subCommandHandler;
 
-        // allow BlacklistAddHandler to
-        friend class BlacklistAddHandler;
-
     public:
+        // the list storing the blacklisted nameToAdd
+        // it is static as all BlacklistHandler share the same list
+        static vector<string> blacklist;
+
         explicit BlacklistHandler(const string &user_input);   // conversion constructor
+
         // validate whether the user_input is correct
         // i.e. the sub-command is correctly inputted and,
         // assign the correct handler to subCommandHandler if the input is valid
@@ -33,7 +35,7 @@ class BlacklistHandler : public InvalidCommandHandler {
         void handle_command() override;
 
         // destructor to release memory of dynamic SubCommandHandler
-        virtual ~BlacklistHandler();
+        virtual ~BlacklistHandler() override; // NOLINT(modernize-use-override)
 };
 
 

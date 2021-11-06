@@ -9,12 +9,14 @@
 
 class SubCommandHandler : public InvalidCommandHandler {
     private:
-        // store the class type name of the base class of the sub-command handler
-        string baseClassType;
+        // store the class type nameToAdd of the base handler of the sub-command handler
+        string baseHandlerType;
 
     public:
         // constructor
-        SubCommandHandler(const string &help_text);
+        explicit SubCommandHandler(const string &help_text, string baseHandlerType);
+
+        // no implementation of void handle_command();
 };
 
 

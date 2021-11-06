@@ -9,7 +9,8 @@
 
 class BlacklistAddHandler : public SubCommandHandler {
     private:
-
+        // store the parameter of blacklist add
+        string nameToAdd;
     public:
         explicit BlacklistAddHandler(const string &userInput);
 
@@ -18,6 +19,9 @@ class BlacklistAddHandler : public SubCommandHandler {
 
         void handle_command() override;
 };
+
+// helper function to check if the parameter string contains invalid characters
+bool validParameter(const string &parameter);
 
 
 #endif //COMMANDPROCESSOR_BLACKLISTADDHANDLER_H
