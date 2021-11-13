@@ -1,9 +1,9 @@
 //
-// Created by kshou on 2021/11/5.
+// Created by kshou on 2021/11/13.
 //
 
-#ifndef COMMANDPROCESSOR_BLACKLISTHANDLER_H
-#define COMMANDPROCESSOR_BLACKLISTHANDLER_H
+#ifndef COMMANDPROCESSOR_WHITELISTHANDLER_H
+#define COMMANDPROCESSOR_WHITELISTHANDLER_H
 
 #include "InvalidCommandHandler.h"
 #include "ListHandler.h"
@@ -15,13 +15,14 @@
 
 using std::vector;
 
-class BlacklistHandler : public ListHandler {
+class WhiteListHandler : public ListHandler {
     private:
-        // the list subCommandHandler handle further process
+        // the subCommandHandler handle further process
         ListHandler *subCommandHandler;
 
     public:
-        explicit BlacklistHandler(const string &user_input);   // conversion constructor
+
+        explicit WhiteListHandler(const string &user_input);   // conversion constructor
 
         // validate whether the user_input is correct
         // i.e. the sub-command is correctly inputted and (return 0 if no error, 1 if has error),
@@ -31,8 +32,9 @@ class BlacklistHandler : public ListHandler {
         void handle_command() override;
 
         // destructor to release memory of dynamic SubCommandHandler
-        virtual ~BlacklistHandler() override; // NOLINT(modernize-use-override)
+        virtual ~WhiteListHandler() override; // NOLINT(modernize-use-override)
+
 };
 
 
-#endif //COMMANDPROCESSOR_BLACKLISTHANDLER_H
+#endif //COMMANDPROCESSOR_WHITELISTHANDLER_H

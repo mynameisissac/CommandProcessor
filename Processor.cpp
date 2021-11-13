@@ -9,8 +9,10 @@
 
 using namespace std;
 
-// definition of the BlacklistHandler class static data member
-vector<string> BlacklistHandler::blacklist;
+// definition of the two lists
+// which are ListHandler class static data member
+vector<string> ListHandler::blacklist;
+vector<string> ListHandler::whitelist;
 
 /**
  *  process the command : validate the input and choose which CommandHandler to assign for handler
@@ -33,6 +35,8 @@ CommandHandler *Processor::response() const {
         return new QuitHandler(programTermination);
     else if (current_user_input.rfind("blacklist", 0) != string::npos)      // command : blacklist
         return new BlacklistHandler(current_user_input);
+    else if (current_user_input.rfind("whitelist", 0) != string::npos)      // command : whitelist
+        return new WhiteListHandler(current_user_input);
     else
         return new InvalidCommandHandler();         // if the input is invalid
 }

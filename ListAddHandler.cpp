@@ -2,16 +2,17 @@
 // Created by kshou on 2021/11/5.
 //
 
-#include "BlacklistAddHandler.h"
+#include "ListAddHandler.h"
 #include "BlacklistHandler.h"
+#include "WhiteListHandler.h"
 #include <iostream>
 
 
 // constructor
-BlacklistAddHandler::BlacklistAddHandler(const string &userInput)
-        : SubCommandHandler("Usage: blacklist add <nameToAdd>", "BlacklistHandler") {
+ListAddHandler::ListAddHandler(const string &userInput, const string &listName)
+        : ListHandler("Usage: " + listName + " add <name>", listName) {
     // check if the input is valid, and assign value to data member nameToAdd
-    errorCode = validateInput(userInput);
+    errorCode = ListAddHandler::validateInput(userInput);
 }
 
 
@@ -28,7 +29,7 @@ bool validParameter(const string &parameter) {
 // return the errorCode
 // assign the data member nameToAdd if no invalid input (i.e. errorCode == 0)
 int
-BlacklistAddHandler::validateInput(const string &userInput) { // NOLINT(readability-convert-member-functions-to-static)
+ListAddHandler::validateInput(const string &userInput) { // NOLINT(readability-convert-member-functions-to-static)
 
     // substr the parameter part
     int posOfSpace = (int) userInput.find(' ');
@@ -44,19 +45,28 @@ BlacklistAddHandler::validateInput(const string &userInput) { // NOLINT(readabil
 }
 
 
-void BlacklistAddHandler::handle_command() {
+void ListAddHandler::handle_command() {
     // check if there is invalid user input
     if (errorCode != 0) {
         if (errorCode == 1)
             std::cout << "No name provided." << std::endl;
         else if (errorCode == 2)
-            std::cout << "Invalid nameToAdd." << std::endl;
-        InvalidCommandHandler::handle_command();            // print the command specific help text
+            std::cout << "Invalid name." << std::endl;
+        InvalidCommandHandler::handle_command();            // print the command specific help text NOLINT(bugprone-parent-virtual-call)
     }
         // add the name into the list if input is all valid
     else {
+        // assign the correct list to listptr for doing add() process
+        vector<string> *listptr = nullptr;
+        if (listName == "blacklist")
+            listptr = &blacklist;
+        else if (listName == "whitelist")
+            listptr = &whitelist;
+
         // push the name into the list
-        BlacklistHandler::blacklist.push_back(nameToAdd);
-        std::cout << nameToAdd << " added to blacklist." << std::endl;
+        if (listptr != nullptr) {   // avoid dereferencing nullptr
+            listptr->push_back(nameToAdd);
+            std::cout << nameToAdd << " added to " << listName << '.' << std::endl;
+        }
     }
 }
