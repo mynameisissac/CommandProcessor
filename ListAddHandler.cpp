@@ -4,7 +4,6 @@
 
 #include "ListAddHandler.h"
 #include "BlacklistHandler.h"
-#include "WhiteListHandler.h"
 #include <iostream>
 
 
