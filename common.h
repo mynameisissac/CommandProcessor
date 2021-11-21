@@ -39,7 +39,8 @@ const string quitAlias[] = {"quit", "exit", "stop"};
  * @param target the string to be searched
  * @return that alias if found, empty string if not found
  */
-string inTheList(const string stringList[], int size, const string &target) {
+inline string inTheList(const string stringList[], int size,
+                        const string &target) {        // inline keyword for putting function definition in header file
     for (int i = 0; i < size; ++i)
         if (target.rfind(stringList[i], 0) != string::npos)
             return stringList[i];
@@ -47,7 +48,7 @@ string inTheList(const string stringList[], int size, const string &target) {
 }
 
 // a function validate current user input and return the corresponding commandType
-commandType getCommandType(const string &userInput) {
+inline commandType getCommandType(const string &userInput) {
     if (!inTheList(pingAlias, 1, userInput).empty())
         return commandType::ping;
     else if (!inTheList(sayAlias, 3, userInput).empty())

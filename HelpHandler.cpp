@@ -12,14 +12,17 @@ using std::string;
 // Note that here the error message(Invalid handler help text) of HelpHandler is not the usage help text,
 // which is different from typical InvalidCommandHandler's help text (they are usage help text)
 HelpHandler::HelpHandler(const string &user_input, const string &nameOnCall)
-        : InvalidCommandHandler("add\nhelp\nping\nquit\nsay\nsubtract", 1), userInput(user_input) {
+        : InvalidCommandHandler("add\nhelp\nping\nquit\nsay\nsubtract", 1) {
     // assign the inherited data members, i.e. which alias used to call helpHandler
     this->nameOnCall = nameOnCall;
-    if (user_input.length() > 4)       //  if there exist parameter i.e. user_input is valid then no error
+    parameter = user_input.substr(nameOnCall.length() + 1);
+    if (user_input.length() >
+        nameOnCall.length())       //  if there exist parameter i.e. user_input is valid then no error
         errorCode = 0;
 
     // assign the correct commandType to help with
-    commandToHelp = getCommandType(user_input);
+    commandToHelp = getCommandType(parameter);
+    //std::cout << "help result: " << (commandToHelp == commandType::undefined) << std:: endl;
 }
 
 // overrided from Command Handler
@@ -31,17 +34,18 @@ void HelpHandler::handle_command() {
     } else {
         InvalidCommandHandler *handler = nullptr;
         if (commandToHelp == commandType::ping)        // help ping
-            handler = new PingHandler(inTheList(pingAlias, 1, userInput));
+            handler = new PingHandler(inTheList(pingAlias, 1, parameter));
         else if (commandToHelp == commandType::say)              // help say
-            handler = new SayHandler(inTheList(sayAlias, 3, userInput));
-            /*else if (commandType == "add")              // help add
-                handler = new AddHandler(1);
-            else if (commandType == "subtract")         // help subtract
-                handler = new AddHandler(-1);*/
+            handler = new SayHandler(inTheList(sayAlias, 3, parameter));
+        else if (commandToHelp == commandType::add)              // help add
+            handler = new AddHandler(inTheList(addAlias, 2, parameter));
+        else if (commandToHelp == commandType::subtract)         // help subtract
+            handler = new AddHandler(inTheList(subtractAlias, 2, parameter));
         else if (commandToHelp == commandType::quit)             // help quit
-            handler = new QuitHandler();
+            handler = new QuitHandler(inTheList(quitAlias, 3, parameter));
         else {                                     // help help/man help/man man
-            std::cout << "Usage: " + nameOnCall + " [<command>]"
+            string newNameOnCall = inTheList(helpAlias, 2, parameter);
+            std::cout << "Usage: " + newNameOnCall + " [<command>]"
                       << std::endl;        // print HelpHandler's usage help_text
             return;                 // early return
         }

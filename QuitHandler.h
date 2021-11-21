@@ -14,11 +14,11 @@ class QuitHandler : public InvalidCommandHandler {
         // pass from the main
         bool *const programEndIndicator;
     public:
-        // default constructor
-        QuitHandler();
-
         // conversion constructor
-        explicit QuitHandler(bool *programEndIndicator);
+        explicit QuitHandler(const string &nameOnCall);
+
+        // other constructor
+        explicit QuitHandler(bool *programEndIndicator, const string &nameOnCall);
 
         void handle_command() override;
 };

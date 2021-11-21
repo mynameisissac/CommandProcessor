@@ -18,8 +18,8 @@ class HelpHandler : public InvalidCommandHandler {
         // a string to store which command to help with
         // e.g. commandType = "ping", "say", "add", ...
         commandType commandToHelp;
-        // store the userInput
-        string userInput;
+        // store the string value of parameter from user input
+        string parameter;
     public:
         explicit HelpHandler(const string &user_input, const string &nameOnCall);
 
