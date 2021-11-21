@@ -7,15 +7,18 @@
 
 #include "InvalidCommandHandler.h"
 #include <string>
+#include <vector>
 
 using std::string;
+using std::vector;
 
 class SayHandler : public InvalidCommandHandler {
     private:
         string response_text;
     public:
-        SayHandler();           // default constructor
-        explicit SayHandler(const string &user_input);     // constructor, explicit to avoid implicit conversion
+        explicit SayHandler(const string &nameOnCall);           // conversion constructor
+        explicit SayHandler(const string &user_input,
+                            const string &nameOnCall);     // constructor, explicit to avoid implicit conversion
         void handle_command() override;
 };
 

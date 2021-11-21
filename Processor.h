@@ -6,6 +6,7 @@
 #define COMMANDPROCESSOR_PROCESSOR_H
 
 #include <iostream>
+#include "common.h"
 #include "CommandHandler.h"
 #include "PingHandler.h"
 #include "SayHandler.h"
@@ -21,18 +22,6 @@
 using std::string;
 using std::vector;
 
-// define all the available commands here
-enum class commandType {
-    ping,
-    say,        // echo, print
-    add,        // plus
-    subtract,   // minus
-    blacklist,  // denylist
-    whitelist,  // allowlist
-    help,       // man
-    quit,       // exit, stop
-    undefined   // exceptional case
-};
 
 class Processor {
 
@@ -45,8 +34,6 @@ class Processor {
         explicit Processor(bool *programTermination);       // conversion constructor
         CommandHandler *response() const;                   // process the command
         void readInput();                                   // read user input command
-        // a static function validate current user input and return the corresponding commandType
-        static commandType validateInput(const string &userInput);
 
         // accessor
         string getRecord(int index) const;                  // return the index-th user input record

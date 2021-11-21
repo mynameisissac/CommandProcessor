@@ -16,18 +16,22 @@ bool validDecimal(const string &str) {
 }
 
 // a conversion constructor which only
-AddHandler::AddHandler(int sign)
-        : InvalidCommandHandler("Usage: add <decimal1> <decimal2>", 0), signOfdecimal_2(sign), decimal_1(0),
+AddHandler::AddHandler(const string &nameOnCall)
+        : InvalidCommandHandler("Usage: " + nameOnCall + " <decimal1> <decimal2>", 0), signOfdecimal_2(1),
+          decimal_1(0),
           decimal_2(0) {
-    if (sign == -1)
-        help_text = "Usage: subtract <decimal1> <decimal2>";
+    if (getCommandType(nameOnCall) == commandType::subtract)
+        signOfdecimal_2 = -1;
 }
 
 
 // constructor of the AddHandler
 // assign the decimal values and the sign
-AddHandler::AddHandler(const string &user_input)
-        : InvalidCommandHandler("Usage: add <decimal1> <decimal2>", 0), signOfdecimal_2(1) {
+AddHandler::AddHandler(const string &user_input, const string &nameOnCall)
+        : InvalidCommandHandler("Usage: " + nameOnCall + " <decimal1> <decimal2>", 0), signOfdecimal_2(1) {
+    // assign the inherited data member first
+    this->nameOnCall = nameOnCall;
+
     int posOfSpace1 = (int) user_input.find(' ');                              // the position of the first white space
     int posOfSpace2 = (int) user_input.find(' ', posOfSpace1 + 1);        // the position of the second white space
 
@@ -42,10 +46,8 @@ AddHandler::AddHandler(const string &user_input)
         decimal_1 = std::stof(user_input.substr(posOfSpace1 + 1, posOfSpace2 - posOfSpace1 - 1));
         decimal_2 = std::stof(user_input.substr(posOfSpace2 + 1));
     }
-    if (user_input.rfind("subtract", 0) != string::npos) {
-        help_text = "Usage: subtract <decimal1> <decimal2>";
+    if (getCommandType(nameOnCall) == commandType::subtract)
         signOfdecimal_2 = -1;
-    }
 }
 
 // print the error message, and the help_text

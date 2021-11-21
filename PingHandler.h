@@ -20,7 +20,9 @@ class PingHandler : public InvalidCommandHandler {
         string response_text{"pong"};
 
     public:
-        PingHandler();          // default constructor
+
+        PingHandler() = default;    // default constructor
+        explicit PingHandler(const string &nameOnCall);          // conversion constructor
         void handle_command() override;
 };
 

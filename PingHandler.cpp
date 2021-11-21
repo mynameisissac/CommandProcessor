@@ -5,10 +5,15 @@
 #include "PingHandler.h"
 #include <iostream>
 
+
 void PingHandler::handle_command() {
     std::cout << response_text << std::endl;
 }
 
 
-PingHandler::PingHandler()
-        : InvalidCommandHandler("Usage: ping", 0) {}
+PingHandler::PingHandler(const string &nameOnCall)
+        : InvalidCommandHandler("Usage: " + nameOnCall, 0) {
+
+    // initialize the inherited data member
+    this->nameOnCall = nameOnCall;
+}
