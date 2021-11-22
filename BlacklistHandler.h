@@ -21,7 +21,7 @@ class BlacklistHandler : public ListHandler {
         ListHandler *subCommandHandler;
 
     public:
-        explicit BlacklistHandler(const string &user_input);   // conversion constructor
+        explicit BlacklistHandler(const string &user_input);
 
         // validate whether the user_input is correct
         // i.e. the sub-command is correctly inputted and (return 0 if no error, 1 if has error),
