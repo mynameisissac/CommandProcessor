@@ -1,2 +1,4 @@
 # CommandProcessor
-no readme, read yourself
+
+
+Implementation with respect to https://github.com/Henry-YSLin/CommandProcessorSpecs
