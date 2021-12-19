@@ -2,13 +2,13 @@
 // Created by kshou on 2021/11/5.
 //
 
-#include "ListAddHandler.h"
-#include "BlacklistHandler.h"
+#include "../include/ListHandler/ListAddHandler.h"
+#include "../include/ListHandler/BlacklistHandler.h"
 #include <iostream>
 
 
 // constructor
-ListAddHandler::ListAddHandler(const string &userInput, const string &listName)
+ListAddHandler::ListAddHandler(const string& userInput, const string& listName)
         : ListHandler("Usage: " + listName + " add <name>", listName) {
     // check if the input is valid, and assign value to data member nameToAdd
     errorCode = ListAddHandler::validateInput(userInput);

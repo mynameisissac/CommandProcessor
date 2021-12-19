@@ -5,7 +5,7 @@
 #ifndef COMMANDPROCESSOR_LISTHANDLER_H
 #define COMMANDPROCESSOR_LISTHANDLER_H
 
-#include "InvalidCommandHandler.h"
+#include "../InvalidCommandHandler.h"
 #include <vector>
 
 using std::vector;

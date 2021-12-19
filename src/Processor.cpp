@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "Processor.h"
+#include "../include/Processor.h"
 #include <string>
 #include <algorithm>
 
@@ -14,7 +14,6 @@ using namespace std;
 // which are ListHandler class static data member
 vector<string> ListHandler::blacklist;
 vector<string> ListHandler::whitelist;
-
 
 
 /**

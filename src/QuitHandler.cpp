@@ -2,7 +2,7 @@
 // Created by kshou on 2021/11/1.
 //
 
-#include "QuitHandler.h"
+#include "../include/QuitHandler.h"
 
 // default constructor
 QuitHandler::QuitHandler(const string &nameOnCall)

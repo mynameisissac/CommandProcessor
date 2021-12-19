@@ -5,7 +5,7 @@
 #ifndef COMMANDPROCESSOR_LISTADDHANDLER_H
 #define COMMANDPROCESSOR_LISTADDHANDLER_H
 
-#include "InvalidCommandHandler.h"
+#include "../InvalidCommandHandler.h"
 #include "ListHandler.h"
 
 class ListAddHandler : public ListHandler {

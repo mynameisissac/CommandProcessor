@@ -1,0 +1,14 @@
+//
+// Created by kshou on 2021/12/19.
+//
+
+#ifndef COMMANDPROCESSOR_CONFIRMATIONHANDLER_H
+#define COMMANDPROCESSOR_CONFIRMATIONHANDLER_H
+
+
+class ConfirmationHandler {
+
+};
+
+
+#endif //COMMANDPROCESSOR_CONFIRMATIONHANDLER_H

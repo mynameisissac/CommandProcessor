@@ -5,7 +5,7 @@
 #ifndef COMMANDPROCESSOR_BLACKLISTHANDLER_H
 #define COMMANDPROCESSOR_BLACKLISTHANDLER_H
 
-#include "InvalidCommandHandler.h"
+#include "../InvalidCommandHandler.h"
 #include "ListHandler.h"
 #include "ListAddHandler.h"
 #include "ListClearHandler.h"

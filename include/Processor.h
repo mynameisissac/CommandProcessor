@@ -14,9 +14,9 @@
 #include "QuitHandler.h"
 #include "InvalidCommandHandler.h"
 #include "HelpHandler.h"
-#include "ListHandler.h"
-#include "BlacklistHandler.h"
-#include "WhiteListHandler.h"
+#include "ListHandler/ListHandler.h"
+#include "ListHandler/BlacklistHandler.h"
+#include "ListHandler/WhiteListHandler.h"
 #include <vector>
 
 using std::string;

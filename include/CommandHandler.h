@@ -15,7 +15,7 @@ class CommandHandler {
         std::string nameOnCall;
 
     public:
-        CommandHandler() = default;                   // default constructor of the interface
+        CommandHandler() = default;                 // default constructor of the interface
         virtual void handle_command() = 0;          // pure virtual function that handle different kinds of command
         virtual ~CommandHandler();                 // the destructor of interface should be virtual
 };

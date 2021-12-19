@@ -3,5 +3,24 @@ project(CommandProcessor)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(CommandProcessor main.cpp Processor.cpp Processor.h CommandHandler.cpp CommandHandler.h PingHandler.cpp PingHandler.h SayHandler.cpp SayHandler.h AddHandler.cpp AddHandler.h InvalidCommandHandler.cpp InvalidCommandHandler.h HelpHandler.cpp HelpHandler.h QuitHandler.cpp QuitHandler.h BlacklistHandler.cpp BlacklistHandler.h ListAddHandler.cpp ListAddHandler.h SubCommandHandler.cpp SubCommandHandler.h ListClearHandler.cpp ListClearHandler.h ListListHandler.cpp ListListHandler.h ListRemoveHandler.cpp ListRemoveHandler.h ListHandler.cpp ListHandler.h WhiteListHandler.cpp WhiteListHandler.h common.h)
+add_executable(CommandProcessor
+        src/main.cpp
+        src/Processor.cpp include/Processor.h
+        src/CommandHandler.cpp include/CommandHandler.h
+        src/PingHandler.cpp include/PingHandler.h
+        src/SayHandler.cpp include/SayHandler.h
+        src/AddHandler.cpp include/AddHandler.h
+        src/InvalidCommandHandler.cpp include/InvalidCommandHandler.h
+        src/HelpHandler.cpp include/HelpHandler.h
+        src/QuitHandler.cpp include/SubCommandHandler.h
+        src/ListClearHandler.cpp include/QuitHandler.h
+        src/BlacklistHandler.cpp include/ListHandler/BlacklistHandler.h
+        src/ListAddHandler.cpp include/ListHandler/ListAddHandler.h
+        src/SubCommandHandler.cpp include/ListHandler/ListClearHandler.h
+        src/ListListHandler.cpp include/ListHandler/ListListHandler.h
+        src/ListRemoveHandler.cpp include/ListHandler/ListRemoveHandler.h
+        src/ListHandler.cpp include/ListHandler/ListHandler.h
+        src/WhiteListHandler.cpp include/ListHandler/WhiteListHandler.h
+        include/common.h
+        src/ConfirmationHandler.cpp include/ConfirmationHandler.h)
 

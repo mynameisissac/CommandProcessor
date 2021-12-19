@@ -2,17 +2,17 @@
 // Created by kshou on 2021/11/6.
 //
 
-#include "ListListHandler.h"
-#include "BlacklistHandler.h"
-#include "WhiteListHandler.h"
+#include "../include/ListHandler/ListListHandler.h"
+#include "../include/ListHandler/BlacklistHandler.h"
+#include "../include/ListHandler/WhiteListHandler.h"
 #include <iostream>
 
 // constructor
-ListListHandler::ListListHandler(const string &listName)
+ListListHandler::ListListHandler(const string& listName)
         : ListHandler("Usage: " + listName + " list", listName) {}
 
 // overrided function
-int ListListHandler::validateInput(const string &user_input) {
+int ListListHandler::validateInput(const string& user_input) {
     return 0;       // do nothing
 }
 

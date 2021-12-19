@@ -1,24 +1,24 @@
 //
-// Created by kshou on 2021/11/5.
+// Created by kshou on 2021/11/13.
 //
 
-#include "BlacklistHandler.h"
+#include "../include/ListHandler/WhiteListHandler.h"
 
 
 // conversion constructor
-BlacklistHandler::BlacklistHandler(const string &user_input)
+WhiteListHandler::WhiteListHandler(const string &user_input)
         : ListHandler(
-        "Usage: blacklist add <name>\nUsage: blacklist clear\nUsage: blacklist list\nUsage: blacklist remove <name>",
-        "blacklist"), subCommandHandler(nullptr) {
+        "Usage: whitelist add <name>\nUsage: whitelist clear\nUsage: whitelist list\nUsage: whitelist remove <name>",
+        "whitelist"), subCommandHandler(nullptr) {
     // if the user_input is invalid, assign errorCode to be 1
-    errorCode = BlacklistHandler::validateInput(user_input);
+    errorCode = WhiteListHandler::validateInput(user_input);
 
 }
 
 // check if the user input is valid and
 // assign the correct handler to subCommandHandler if the input is valid
 int
-BlacklistHandler::validateInput(const string &user_input)  // NOLINT(readability-convert-member-functions-to-static)
+WhiteListHandler::validateInput(const string &user_input)  // NOLINT(readability-convert-member-functions-to-static)
 {
     // substring the subCommand part (including the parameter)
     int posOfSpace1 = (int) user_input.find(' ');                              // the position of the first white space
@@ -26,23 +26,23 @@ BlacklistHandler::validateInput(const string &user_input)  // NOLINT(readability
     string subCommand = user_input.substr(posOfSpace1 + 1);
     string subCommandName = user_input.substr(posOfSpace1 + 1, posOfSpace2 - posOfSpace1 - 1);
     if (subCommandName == "add") {                     // sub-command : add        NOLINT(bugprone-branch-clone)
-        subCommandHandler = new ListAddHandler(subCommand, "blacklist");
+        subCommandHandler = new ListAddHandler(subCommand, "whitelist");
         return 0;
     } else if (subCommandName == "clear") {            // sub-command : clear
-        subCommandHandler = new ListClearHandler("blacklist");
+        subCommandHandler = new ListClearHandler("whitelist");
         return 0;
     } else if (subCommandName == "list") {             // sub-command : list
-        subCommandHandler = new ListListHandler("blacklist");
+        subCommandHandler = new ListListHandler("whitelist");
         return 0;
     } else if (subCommandName == "remove") {           // sub-command : remove
-        subCommandHandler = new ListRemoveHandler(subCommand, "blacklist");
+        subCommandHandler = new ListRemoveHandler(subCommand, "whitelist");
         return 0;
     }
 
     return 1;       // return 1 means error
 }
 
-void BlacklistHandler::handle_command() {
+void WhiteListHandler::handle_command() {
     // print help_text if there is input error
     if (errorCode != 0)
         InvalidCommandHandler::handle_command();    // NOLINT(bugprone-parent-virtual-call)
@@ -53,7 +53,7 @@ void BlacklistHandler::handle_command() {
 
 
 // destructor
-BlacklistHandler::~BlacklistHandler() {
+WhiteListHandler::~WhiteListHandler() {
     // release memory
     delete subCommandHandler;
 }

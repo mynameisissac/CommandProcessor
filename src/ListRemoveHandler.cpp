@@ -2,15 +2,15 @@
 // Created by kshou on 2021/11/6.
 //
 
-#include "ListRemoveHandler.h"
-#include "ListAddHandler.h"        // to use the global function bool validParameter(const string& parameter) in that headerfile
-#include "BlacklistHandler.h"
-#include "WhiteListHandler.h"
+#include "../include/ListHandler/ListRemoveHandler.h"
+#include "../include/ListHandler/ListAddHandler.h"        // to use the global function bool validParameter(const string& parameter) in that headerfile
+#include "../include/ListHandler/BlacklistHandler.h"
+#include "../include/ListHandler/WhiteListHandler.h"
 #include <iostream>
 #include <algorithm>
 
 // conversion constructor
-ListRemoveHandler::ListRemoveHandler(const string &userInput, const string &listName)
+ListRemoveHandler::ListRemoveHandler(const string& userInput, const string& listName)
         : ListHandler("Usage: " + listName + " remove <name>", listName) {
     // check if the input is valid, and assign value to data member nameToAdd
     errorCode = ListRemoveHandler::validateInput(userInput);
