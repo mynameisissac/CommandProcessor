@@ -15,8 +15,11 @@ BlacklistHandler::BlacklistHandler(const string &user_input)
 
 }
 
-// check if the user input is valid and
-// assign the correct handler to subCommandHandler if the input is valid
+/**
+ * check if the user input is valid and assign the correct handler to subCommandHandler if the input is valid
+ * @param user_input user input in string
+ * @return errorCode as int
+ */
 int
 BlacklistHandler::validateInput(const string &user_input)  // NOLINT(readability-convert-member-functions-to-static)
 {

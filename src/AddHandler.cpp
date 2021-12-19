@@ -16,10 +16,11 @@ bool validDecimal(const string &str) {
 }
 
 // a conversion constructor which only
-AddHandler::AddHandler(const string &nameOnCall)
+AddHandler::AddHandler(const string& nameOnCall)
         : InvalidCommandHandler("Usage: " + nameOnCall + " <decimal1> <decimal2>", 0), signOfdecimal_2(1),
           decimal_1(0),
           decimal_2(0) {
+    this->nameOnCall = nameOnCall;
     if (getCommandType(nameOnCall) == commandType::subtract)
         signOfdecimal_2 = -1;
 }

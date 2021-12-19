@@ -4,8 +4,7 @@
 
 #include "../include/ListHandler/ListRemoveHandler.h"
 #include "../include/ListHandler/ListAddHandler.h"        // to use the global function bool validParameter(const string& parameter) in that headerfile
-#include "../include/ListHandler/BlacklistHandler.h"
-#include "../include/ListHandler/WhiteListHandler.h"
+#include "../include/Confirmation.h"
 #include <iostream>
 #include <algorithm>
 
@@ -38,6 +37,10 @@ ListRemoveHandler::validateInput(
 }
 
 void ListRemoveHandler::handle_command() {
+
+    if (!Confirmation()())      // use function object Confirmation to confirm with user decision
+        return;
+
     // check if there is invalid user input
     if (errorCode != 0) {
         if (errorCode == 1)
@@ -45,26 +48,26 @@ void ListRemoveHandler::handle_command() {
         else if (errorCode == 2)
             std::cout << "Invalid name." << std::endl;
         InvalidCommandHandler::handle_command();            // print the command specific help text NOLINT(bugprone-parent-virtual-call)
+        return;
     }
-        // remove the name from the list if input is all valid
-    else {
-        // declare a pointer to the list
-        vector<string> *listptr = nullptr;
-        if (listName == "blacklist")
-            listptr = &blacklist;
-        else if (listName == "whitelist")
-            listptr = &whitelist;
 
-        if (listptr != nullptr) {   // avoid dereferencing nullptr
-            // check if the name exist in the list
-            auto iteratorOfNamePos = std::find(listptr->begin(), listptr->end(),
-                                               nameToRemove);
-            if (iteratorOfNamePos != listptr->end()) {
-                // remove the target position element
-                listptr->erase(iteratorOfNamePos);
-                std::cout << nameToRemove << " removed from " << listName << '.' << std::endl;
-            } else // the name not exist in the list
-                std::cout << nameToRemove << " is not in the " << listName << '.' << std::endl;
-        }
+    // remove the name from the list if input is all valid
+    // declare a pointer to the list
+    vector<string>* listptr = nullptr;
+    if (listName == "blacklist")
+        listptr = &blacklist;
+    else if (listName == "whitelist")
+        listptr = &whitelist;
+
+    if (listptr != nullptr) {   // avoid dereferencing nullptr
+        // check if the name exist in the list
+        auto iteratorOfNamePos = std::find(listptr->begin(), listptr->end(),
+                                           nameToRemove);
+        if (iteratorOfNamePos != listptr->end()) {
+            // remove the target position element
+            listptr->erase(iteratorOfNamePos);
+            std::cout << nameToRemove << " removed from " << listName << '.' << std::endl;
+        } else // the name not exist in the list
+            std::cout << nameToRemove << " is not in the " << listName << '.' << std::endl;
     }
 }

@@ -20,9 +20,9 @@ class AddHandler : public InvalidCommandHandler {
     public:
 
         explicit AddHandler(
-                const string &nameOnCall);              // a conversion constructor which only consider the sign (do add or subtract)
-        explicit AddHandler(const string &user_input,
-                            const string &nameOnCall);              // conversion constructor takes a string
+                const string& nameOnCall);              // a conversion constructor which only consider the sign (do add or subtract)
+        explicit AddHandler(const string& user_input,
+                            const string& nameOnCall);              // conversion constructor takes a string
         void printErrorMessage();                       // print the error help_text when the user input is invalid
         void handle_command() override;
 

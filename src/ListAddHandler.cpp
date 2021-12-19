@@ -4,6 +4,7 @@
 
 #include "../include/ListHandler/ListAddHandler.h"
 #include "../include/ListHandler/BlacklistHandler.h"
+#include "../include/Confirmation.h"
 #include <iostream>
 
 
@@ -43,8 +44,12 @@ ListAddHandler::validateInput(const string &userInput) { // NOLINT(readability-c
     return 0;
 }
 
-
+// requires confirmation
 void ListAddHandler::handle_command() {
+
+    if (!Confirmation()())      // use function object Confirmation to confirm with user decision
+        return;
+
     // check if there is invalid user input
     if (errorCode != 0) {
         if (errorCode == 1)
@@ -52,20 +57,20 @@ void ListAddHandler::handle_command() {
         else if (errorCode == 2)
             std::cout << "Invalid name." << std::endl;
         InvalidCommandHandler::handle_command();            // print the command specific help text NOLINT(bugprone-parent-virtual-call)
+        return;
     }
-        // add the name into the list if input is all valid
-    else {
-        // assign the correct list to listptr for doing add() process
-        vector<string> *listptr = nullptr;
-        if (listName == "blacklist")
-            listptr = &blacklist;
-        else if (listName == "whitelist")
-            listptr = &whitelist;
 
-        // push the name into the list
-        if (listptr != nullptr) {   // avoid dereferencing nullptr
-            listptr->push_back(nameToAdd);
-            std::cout << nameToAdd << " added to " << listName << '.' << std::endl;
-        }
+    // add the name into the list if input is all valid
+    // assign the correct list to listptr for doing add() process
+    vector<string>* listptr = nullptr;
+    if (listName == "blacklist")
+        listptr = &blacklist;
+    else if (listName == "whitelist")
+        listptr = &whitelist;
+
+    // push the name into the list
+    if (listptr != nullptr) {   // avoid dereferencing nullptr
+        listptr->push_back(nameToAdd);
+        std::cout << nameToAdd << " added to " << listName << '.' << std::endl;
     }
 }

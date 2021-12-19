@@ -3,6 +3,7 @@
 //
 
 #include "../include/QuitHandler.h"
+#include "../include/Confirmation.h"
 
 // default constructor
 QuitHandler::QuitHandler(const string &nameOnCall)
@@ -18,7 +19,12 @@ QuitHandler::QuitHandler(bool *programEndIndicator, const string &nameOnCall)
     this->nameOnCall = nameOnCall;
 }
 
+// requires user confirmation
 void QuitHandler::handle_command() {
+
+    if (!Confirmation()())      // use function object Confirmation to confirm with user decision
+        return;
+
     // set the program terminate indicator to true
     (*programEndIndicator) = true;
 }

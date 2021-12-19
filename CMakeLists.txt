@@ -4,7 +4,7 @@ project(CommandProcessor)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(CommandProcessor
-        src/main.cpp
+        main.cpp
         src/Processor.cpp include/Processor.h
         src/CommandHandler.cpp include/CommandHandler.h
         src/PingHandler.cpp include/PingHandler.h
@@ -22,5 +22,5 @@ add_executable(CommandProcessor
         src/ListHandler.cpp include/ListHandler/ListHandler.h
         src/WhiteListHandler.cpp include/ListHandler/WhiteListHandler.h
         include/common.h
-        src/ConfirmationHandler.cpp include/ConfirmationHandler.h)
+        src/Confirmation.cpp include/Confirmation.h)
 

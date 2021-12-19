@@ -1,20 +1,21 @@
 #include <iostream>
 #include <vector>
-#include "../include/Processor.h"
+#include "include/Processor.h"
 
 using namespace std;
 
 
 // print the start message
-void startPrint() {
+inline void startPrint() {
     cout << "Command Processor\nType 'quit' to exit" << endl;
 }
 
 int main() {
     startPrint();
-    bool *const programTermination = new bool;
-    auto *testing = new Processor(programTermination);       // create a dynamic processor object to process the command
-    CommandHandler *handler;                                          // handler is to handle different kinds of command
+    bool* const programTermination = new bool;
+    auto* testing = new Processor(programTermination);       // create a dynamic processor object to process the command
+    CommandHandler* handler;                                          // handler is to handle different kinds of command
+
     while (!(*programTermination)) {
         testing->readInput();                           // read the input first
         handler = testing->response();                  // response() will assign suitable CommandHandler to handler
@@ -25,5 +26,6 @@ int main() {
     // avoid memory leak
     delete testing;
     delete programTermination;
+
     return 0;
 }

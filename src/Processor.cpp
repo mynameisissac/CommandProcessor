@@ -62,7 +62,10 @@ Processor::Processor(bool *programTermination)
 void Processor::readInput() {
     string input;
     cout << "\n> ";
-    getline(cin, input);
+
+    while (input.empty())           // ensure must input must be read
+        getline(cin, input);
+
     current_user_input = input;
     user_input_record.push_back(input);
 }
