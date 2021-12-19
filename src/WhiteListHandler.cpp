@@ -29,7 +29,7 @@ WhiteListHandler::validateInput(const string &user_input)  // NOLINT(readability
         subCommandHandler = new ListAddHandler(subCommand, "whitelist");
         return 0;
     } else if (subCommandName == "clear") {            // sub-command : clear
-        subCommandHandler = new ListClearHandler("whitelist");
+        subCommandHandler = new ListClearHandler(subCommand, "whitelist");
         return 0;
     } else if (subCommandName == "list") {             // sub-command : list
         subCommandHandler = new ListListHandler("whitelist");

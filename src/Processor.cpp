@@ -38,7 +38,7 @@ CommandHandler *Processor::response() const {
     else if (typeOfCommand == commandType::help)            // command : help
         return new HelpHandler(current_user_input, inTheList(helpAlias, 2, current_user_input));
     else if (typeOfCommand == commandType::quit)           // command : quit
-        return new QuitHandler(programTermination, inTheList(quitAlias, 3, current_user_input));
+        return new QuitHandler(current_user_input, programTermination, inTheList(quitAlias, 3, current_user_input));
     else if (typeOfCommand == commandType::blacklist)      // command : blacklist
         return new BlacklistHandler(current_user_input);
     else if (typeOfCommand == commandType::whitelist)      // command : whitelist

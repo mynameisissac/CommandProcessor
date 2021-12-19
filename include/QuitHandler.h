@@ -12,13 +12,17 @@ class QuitHandler : public InvalidCommandHandler {
     private:
         // pointer point to a location where store the program end indicator
         // pass from the main
-        bool *const programEndIndicator;
+        bool* const programEndIndicator;
+        // quit requires user confirmation
+        bool confirmed = false;
     public:
         // conversion constructor
-        explicit QuitHandler(const string &nameOnCall);
+        explicit QuitHandler(const string& nameOnCall);
 
         // other constructor
-        explicit QuitHandler(bool *programEndIndicator, const string &nameOnCall);
+        explicit QuitHandler(bool* programEndIndicator, const string& nameOnCall);
+
+        QuitHandler(const string& userInput, bool* programEndIndicator, const string& nameOnCall);
 
         void handle_command() override;
 };

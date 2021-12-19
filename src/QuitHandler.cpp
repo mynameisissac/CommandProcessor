@@ -12,17 +12,25 @@ QuitHandler::QuitHandler(const string &nameOnCall)
 }
 
 
-// conversion constructor
+// other constructors
 // programEndIndicator is a constant pointer
-QuitHandler::QuitHandler(bool *programEndIndicator, const string &nameOnCall)
+QuitHandler::QuitHandler(bool* programEndIndicator, const string& nameOnCall)
         : InvalidCommandHandler("Usage: " + nameOnCall, 0), programEndIndicator(programEndIndicator) {
     this->nameOnCall = nameOnCall;
+}
+
+QuitHandler::QuitHandler(const string& userInput, bool* programEndIndicator, const string& nameOnCall)
+        : InvalidCommandHandler("Usage: " + nameOnCall, 0), programEndIndicator(programEndIndicator) {
+    // check if has "-Y" pre-confirm message in parameter string
+    if (userInput.find(" -Y") != string::npos
+        || userInput.find(" -y") != string::npos)
+        confirmed = true;
 }
 
 // requires user confirmation
 void QuitHandler::handle_command() {
 
-    if (!Confirmation()())      // use function object Confirmation to confirm with user decision
+    if (!confirmed && !Confirmation()())      // use function object Confirmation to confirm with user decision
         return;
 
     // set the program terminate indicator to true

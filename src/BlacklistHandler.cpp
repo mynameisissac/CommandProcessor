@@ -32,7 +32,7 @@ BlacklistHandler::validateInput(const string &user_input)  // NOLINT(readability
         subCommandHandler = new ListAddHandler(subCommand, "blacklist");
         return 0;
     } else if (subCommandName == "clear") {            // sub-command : clear
-        subCommandHandler = new ListClearHandler("blacklist");
+        subCommandHandler = new ListClearHandler(subCommand, "blacklist");
         return 0;
     } else if (subCommandName == "list") {             // sub-command : list
         subCommandHandler = new ListListHandler("blacklist");

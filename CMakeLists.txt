@@ -24,3 +24,5 @@ add_executable(CommandProcessor
         include/common.h
         src/Confirmation.cpp include/Confirmation.h)
 
+add_executable(test scratch.cpp)
+
