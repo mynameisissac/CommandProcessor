@@ -11,12 +11,14 @@ class ListRemoveHandler : public ListHandler {
     private:
         //store the parameter of blacklist remove
         string nameToRemove;
+        // list remove requires user confirmation
+        bool confirmed = false;
     public:
         //constructor
-        explicit ListRemoveHandler(const string &userInput, const string &listName);
+        explicit ListRemoveHandler(const string& userInput, const string& listName);
 
         // validate the input, including checking if the parameter is input correctly, return the errorCode
-        int validateInput(const string &userInput) override;
+        int validateInput(const string& userInput) override;
 
         void handle_command() override;
 };

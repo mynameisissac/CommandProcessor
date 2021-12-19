@@ -36,6 +36,11 @@ ListAddHandler::validateInput(const string &userInput) { // NOLINT(readability-c
     int posOfSpace2 = (int) userInput.find_first_of(' ', posOfSpace + 1);
     string parameter = userInput.substr(posOfSpace + 1,
                                         (posOfSpace2 == string::npos) ? string::npos : posOfSpace2 - posOfSpace - 1);
+    // check if has "-Y" pre-confirm message in parameter string
+    if (userInput.find("-Y") != string::npos
+        || userInput.find("-y") != string::npos)
+        confirmed = true;
+
     // if nothing provided after add
     if (posOfSpace == string::npos || posOfSpace == userInput.size() - 1)
         return 1;                   // return 1 to errorCode
@@ -43,11 +48,6 @@ ListAddHandler::validateInput(const string &userInput) { // NOLINT(readability-c
         return 2;                   // return 2 to errorCode
 
     // if no invalid input of parameter
-    // check if has "-Y" pre-confirm message in parameter string
-    std::cout << "parameter is " << parameter << std::endl;
-    if (userInput.find("-Y", posOfSpace2) != string::npos
-        || userInput.find("-y", posOfSpace2) != string::npos)
-        confirmed = true;
     nameToAdd = parameter;
     return 0;
 }
